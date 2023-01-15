@@ -29,6 +29,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -601,6 +603,10 @@ public class MattermostClient implements AutoCloseable, AuditsApi, Authenticatio
 
   private String getAuthority() {
     return authToken != null ? authType.getCode() + " " + authToken : null;
+  }
+
+  public Optional<String> getCurrentAccessToken() {
+    return Optional.ofNullable(authToken);
   }
 
   protected ApiResponse<Path> doApiGetFile(String url, String etag) throws IOException {
